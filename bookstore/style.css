@@ -1,0 +1,119 @@
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0ebe3;
+    color: #333;
+}
+
+header {
+    background-color: #8b5e3b;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 12px;
+    font-size: 1.2em;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+nav ul li a:hover {
+    color: #ffdd57;
+    transform: scale(1.1);
+}
+
+main {
+    padding: 30px;
+    text-align: center;
+}
+
+/* Book List Styling */
+.book-list {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.book {
+    border: 2px solid #8b5e3b;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+    background-color: #fff3e0;
+    font-weight: 600;
+}
+
+.book img {
+    width: 160px;
+    height: auto;
+    border-radius: 6px;
+}
+
+.book:hover {
+    transform: translateY(-8px);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+    background-color: #ffe0b2;
+}
+
+/* Contact Form Styling */
+.contact-form {
+    max-width: 450px;
+    margin: auto;
+    padding: 25px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.contact-form label {
+    display: block;
+    margin-top: 12px;
+    font-weight: 600;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border: 2px solid #8b5e3b;
+    border-radius: 6px;
+    font-size: 1em;
+}
+
+.contact-form button {
+    margin-top: 18px;
+    padding: 12px;
+    background: #8b5e3b;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.contact-form button:hover {
+    background: #ffdd57;
+    color: #333;
+    transform: scale(1.05);
+}
