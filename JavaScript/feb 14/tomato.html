@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomato Profit Checker</title>
+</head>
+<body>
+    <h2>Check Tomato Profit for the Week</h2>
+    <p id="output"></p>
+    <script>
+        function checkprofit() {
+            let totalprice = 0;
+            let avg = 0;
+            for (let i = 1; i <= 7; i++) {
+                let val = prompt(`Enter tomato price per Kg of Day ${i}: `);
+
+                val = parseFloat(val);
+                totalprice += val; 
+            }
+
+            avg = totalprice / 7;
+
+            if (avg > 50) {
+                document.getElementById("output").innerHTML = "Tomato has given good profit";
+            } else {
+                document.getElementById("output").innerHTML = "No profit from tomato";
+            }
+        }
+        window.onload = checkprofit;
+    </script>
+</body>
+</html>
