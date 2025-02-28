@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiples of a Number</title>
+</head>
+<body>
+    <h2>Multiples of a Number</h2>
+    <p id="output"></p>
+    <script>
+
+        function multiple() {
+            // Get the first and second numbers from the user
+            var num1 = Number(prompt("Enter the first number (multiple):"));
+            var num2 = Number(prompt("Enter the second number:"));
+
+            // Calculate the third number (num2 + 40)
+            var num3 = num2 + 40;
+
+            // Initialize loop and result variable
+            var i = num2;
+            let result = '';
+
+            // Loop to find multiples of num1 from num2 to num3
+            while (i <= num3) {
+                if (i % num1 === 0) {
+                    result += `${i} is a multiple of ${num1}<br>`; // Accumulate result
+                }
+                i++; // Correctly increment i inside the loop
+            }
+
+            // Display the result in the <p> tag with id "output"
+            document.getElementById("output").innerHTML = result;
+        }
+
+        multiple(); // Call the function to display multiples
+    </script>
+</body>
+</html>

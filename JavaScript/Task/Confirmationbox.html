@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>example</title>
+    </head>
+    <body>
+        <p id="output"></p>
+        <script>
+function confirmbox() {
+    const decide = confirm("Have you completed?");
+    if (decide) {
+        document.getElementById("output").innerHTML = "Good";
+    } else {
+        document.getElementById("output").innerHTML = "Bad";
+    }
+}
+confirmbox()
+</script>
+    </body>
+</html>

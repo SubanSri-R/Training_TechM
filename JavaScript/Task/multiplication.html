@@ -1,0 +1,62 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Table</title>
+</head>
+<body>
+    <h2>Multiplication Table</h2>
+    <script>
+        function displayMultiplicationTable() {
+
+            let num1 = parseInt(prompt("Enter the first number (for the multiplication table):"));
+            let num2 = parseInt(prompt("Enter the second number (limit):"));
+
+            if (isNaN(num1) || isNaN(num2) || num1 <= 0 || num2 <= 0) {
+                alert("Please enter valid positive numbers.");
+                return;
+            }
+
+            for (let i = 1; i <= num2; i++) {
+                console.log(`${num1} * ${i} = ${num1 * i}`);
+            }
+        }
+
+        displayMultiplicationTable();
+    </script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Table</title>
+</head>
+<body>
+    <h2>Multiplication Table</h2>
+    <script>
+        function displayMultiplicationTable() {
+
+            let num1 = parseInt(prompt("Enter the first number (for the multiplication table):"));
+            let num2 = parseInt(prompt("Enter the second number (limit):"));
+
+            if (num1 <= 0 || num2 <= 0) {
+                alert("Please enter valid positive numbers.");
+
+            }
+
+            let result = "";
+            for (let i = 1; i <= num2; i++) {
+                result += `${num1} * ${i} = ${num1 * i}<br>`;
+            }
+
+            document.body.innerHTML += result;
+        }
+
+        displayMultiplicationTable();
+    </script>
+</body>
+</html>
+
