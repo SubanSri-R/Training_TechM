@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fitness Planner - Progress</title>
+  <link rel="stylesheet" href="styles/progress.css">
+  <style>
+    #stopwatch {
+      text-align: center;
+      margin: 20px 0;
+    }
+    #stopwatch-display {
+      font-size: 2em;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    #stopwatch-controls button {
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    .chart-container {
+      margin-top: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Fitness Routine Planner</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="create-plan.html">Create Plan</a></li>
+        <li><a href="my-plan.html">My Plan</a></li>
+        <li><a href="progress.html">Progress</a></li>
+        <li><a href="sign-in.html">Sign In</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="stopwatch">
+      <h2>Stopwatch</h2>
+      <div id="stopwatch-display">00:00:00</div>
+      <div id="stopwatch-controls">
+        <button id="start-stopwatch">Start</button>
+        <button id="stop-stopwatch">Stop</button>
+        <button id="reset-stopwatch">Reset</button>
+      </div>
+    </section>
+
+    <section class="chart-container">
+      <h2>Stopwatch Activity</h2>
+      <canvas id="activity-chart"></canvas>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Fitness Routine Planner</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+  
+    let stopwatchInterval;
+    let startTime;
+    let elapsedTime = 0;
+    let pausedTime = 0;
+    let isRunning = false;
+
+    const stopwatchDisplay = document.getElementById('stopwatch-display');
+    const startButton = document.getElementById('start-stopwatch');
+    const stopButton = document.getElementById('stop-stopwatch');
+    const resetButton = document.getElementById('reset-stopwatch');
+
+    // Chart data
+    let runningTime = 0;
+    let pausedTimeTotal = 0;
+    let labels = []; 
+    let runningData = [];
+    let pausedData = []; 
+
+    function formatTime(time) {
+      const hours = Math.floor(time / 3600);
+      const minutes = Math.floor((time % 3600) / 60);
+      const seconds = time % 60;
+      return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    }
+
+    function updateStopwatch() {
+      const currentTime = Math.floor((Date.now() - startTime + elapsedTime) / 1000);
+      stopwatchDisplay.textContent = formatTime(currentTime);
+    }
+
+    startButton.addEventListener('click', () => {
+      if (!isRunning) {
+        startTime = Date.now();
+        stopwatchInterval = setInterval(updateStopwatch, 1000);
+        startButton.textContent = 'Pause';
+        isRunning = true;
+      } else {
+        clearInterval(stopwatchInterval);
+        elapsedTime += Date.now() - startTime;
+        pausedTime = Date.now();
+        startButton.textContent = 'Resume';
+        isRunning = false;
+      }
+    });
+    stopButton.addEventListener('click', () => {
+      if (isRunning) {
+        clearInterval(stopwatchInterval);
+        elapsedTime += Date.now() - startTime;
+        runningTime += Math.floor(elapsedTime / 1000);
+        elapsedTime = 0;
+        startButton.textContent = 'Start';
+        isRunning = false;
+      }
+      updateChart();
+    });
+
+    resetButton.addEventListener('click', () => {
+      clearInterval(stopwatchInterval);
+      stopwatchInterval = null;
+      elapsedTime = 0;
+      runningTime = 0;
+      pausedTimeTotal = 0;
+      stopwatchDisplay.textContent = '00:00:00';
+      startButton.textContent = 'Start';
+      isRunning = false;
+
+      labels = [];
+      runningData = [];
+      pausedData = [];
+      updateChart();
+    });
+
+    const activityChartCtx = document.getElementById('activity-chart').getContext('2d');
+    const activityChart = new Chart(activityChartCtx, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: 'Time Running (Seconds)',
+            data: runningData,
+            borderColor: 'rgba(54, 162, 235, 1)',
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderWidth: 2,
+            fill: true,
+          },
+          {
+            label: 'Time Paused (Seconds)',
+            data: pausedData,
+            borderColor: 'rgba(255, 99, 132, 1)',
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderWidth: 2,
+            fill: true,
+          },
+        ],
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Time (Seconds)',
+            },
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Time Intervals',
+            },
+          },
+        },
+      },
+    });
+    function updateChart() {
+      const currentTime = new Date().toLocaleTimeString();
+      labels.push(currentTime);
+      runningData.push(runningTime);
+      pausedData.push(pausedTimeTotal);
+
+      activityChart.data.labels = labels;
+      activityChart.data.datasets[0].data = runningData;
+      activityChart.data.datasets[1].data = pausedData;
+      activityChart.update();
+    }
+  </script>
+</body>
+</html>
