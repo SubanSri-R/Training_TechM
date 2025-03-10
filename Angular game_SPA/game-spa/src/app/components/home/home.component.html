@@ -1,0 +1,12 @@
+
+
+  <div class="container mt-5">
+    <div class="search-bar">
+      <input type="text" [(ngModel)]="searchText" placeholder="Search games..." class="form-control" />
+    </div>
+    <div class="game-grid mt-3">
+      <div class="game-cell" *ngFor="let game of games | filter: searchText">
+        <app-game-card [game]="game" (gameClick)="onGameClick(game.id)"></app-game-card>
+      </div>
+    </div>
+  </div>

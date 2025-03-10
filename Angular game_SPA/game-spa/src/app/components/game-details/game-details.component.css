@@ -1,0 +1,89 @@
+/* src/app/components/game-details/game-details.component.scss */
+.container {
+    background-color: #1a1a1a; /* Dark background for gaming vibe */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Darker shadow for depth */
+    color: #ffffff; /* White text for contrast */
+    border: 1px solid #333; /* Subtle border for a sleek look */
+}
+
+/* Image container */
+.col-md-6:first-child {
+    width: 1200px; /* Fixed width */
+    height: 675px; /* Fixed height */
+    aspect-ratio: auto 1200 / 675;
+    overflow: hidden; 
+    border-radius: 8px; 
+    margin: 0 auto; 
+    background-color: #000; 
+    border: 2px solid #444;
+}
+
+/* Image styling */
+.col-md-6:first-child img {
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover;
+    transition: transform 0.3s ease, filter 0.3s ease; 
+    display: block;
+}
+
+.col-md-6:first-child img:hover {
+    transform: scale(1.05); 
+    filter: brightness(1.1); 
+}
+
+
+.col-md-6:last-child {
+    padding-left: 20px; 
+}
+
+h1 {
+    color: #ffc107; 
+    font-size: 3rem;
+    font-weight: bold; 
+    text-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
+}
+
+p {
+    color: #cccccc; 
+    font-size: 1.2rem;
+}
+
+.btn-primary {
+    background-color: #ffc107; 
+    border-color: #ffc107; 
+    color: #1a1a1a;
+    font-weight: bold; 
+    font-size: 1.2rem; 
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease; 
+    box-shadow: 0 0 10px rgba(255, 193, 7, 0.5); 
+}
+
+.btn-primary:hover {
+    background-color: #e0a800;
+    border-color: #e0a800; 
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(255, 193, 7, 0.8);
+}
+
+.game-description {
+    white-space: pre-line;
+    line-height: 1.6;
+    font-size: 1.3rem;
+    color: #cccccc;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+}
+
+.game-description p {
+    margin-bottom: 1rem; 
+    transition: all 0.3s ease; 
+}
+
+.game-description:hover p {
+    color: #ffffff; 
+    font-size: 1.4rem;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3); 
+}

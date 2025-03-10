@@ -1,0 +1,13 @@
+
+  <div class="game-card" [routerLink]="['/details', game.id]">
+    <div class="game-image">
+      <img
+        [src]="game.imageUrl"
+        [alt]="game.name"
+        class="img-fluid"
+        onerror="this.src='assets/images/fallback.jpg'" />
+    </div>
+    <div class="game-name">
+      <h5>{{ game.name }}</h5>
+    </div>
+  </div>

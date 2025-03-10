@@ -1,0 +1,16 @@
+
+
+  <nav class="navbar">
+    <div class="navbar-grid">
+      <div class="navbar-brand">
+        <a [routerLink]="['/']">Game SPA</a>
+      </div>
+      <div class="navbar-user">
+        <div *ngIf="currentUser" class="user-info">
+          <span class="user-name">Welcome, {{ currentUser.name }}!</span>
+          <button class="logout-button" (click)="logout()">Logout</button>
+        </div>
+        <a *ngIf="!currentUser" class="login-link" [routerLink]="['/login']">Login</a>
+      </div>
+    </div>
+  </nav>

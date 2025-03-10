@@ -1,0 +1,23 @@
+
+<div class="container mt-5" *ngIf="game">
+    <div class="row">
+      <div class="col-md-6">
+        <img [src]="game.imageUrl" class="img-fluid" [alt]="game.name" />
+      </div>
+      <div class="col-md-6">
+        <h1>{{ game.name }}</h1>
+        <p><strong>Release Date:</strong> {{ game.releaseDate | date }}</p>
+        <a [href]="game.officialSite" target="_blank" class="btn btn-primary">
+          Official Site
+        </a>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-12">
+        <h2>Description</h2>
+        <div class="game-description">
+          <p>{{ game.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>

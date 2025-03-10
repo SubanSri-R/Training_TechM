@@ -1,0 +1,35 @@
+
+.navbar {
+    padding: 1rem 2rem;
+    background-color: #343a40;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffc107;
+    transition: color 0.3s ease;
+  
+    &:hover {
+      color: #fff;
+    }
+  }
+  
+  .nav-link {
+    font-size: 1.1rem; 
+    color: #fff; 
+    transition: color 0.3s ease; 
+  
+    &:hover {
+      color: #ffc107;
+    }
+  }
+  
+  .navbar-toggler {
+    border-color: #ffc107;
+  }
+  
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 193, 7, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"); /* Yellow toggle icon */
+  }
